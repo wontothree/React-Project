@@ -14,28 +14,28 @@
 }
 
 
-.int-area {
-    width: 400px; 
+.formbox {
+    width: 340px; 
     position: relative;
     margin-top: 20px;
 }
 
-.int-area input {
+.formbox input {
     width: 100%;
-    padding: 20px 0px 7px;
+    padding: 20px 0px 10px;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #999;
     font-size: 18px; 
 }
 
-.int-area label {
+.formbox label {
     color: #999;
 }
 
 
-.btn-area {margin-top: 30px;}
-.btn-area button {
+.btn {margin-top: 30px;}
+.btn button {
     width: 100%; 
     height: 50px;
     background: #166c;
