@@ -1,163 +1,192 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 
-// import Input from '../components/Input/input'
 import '../components/signup.css'
 
 const Signup = () => {
 
-    const [userEmail, setEmail] = useState('');
-    const [userPassword, setPassword] = useState('');
-    const [userPasswordConfirm, setPasswordConfirm] = useState('');
-    const [userName, setName] = useState('');
-    const [userAge, setAge] = useState('');
+  const [userSignupData, setUserSignupData] = useState({
+    userEmail: '',
+    userPassword: '',
+    userPasswordConfirm: '',
+    userName: '',
+  });
 
-    //오류메시지 상태저장
-    const [emailMessage, setEmailMessage] = useState('')
-    const [passwordMessage, setPasswordMessage] = useState('')
-    const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('')
-    const [nameMessage, setNameMessage] = useState('')
+  const [userAge, setAge] = useState('')
 
-    // 유효성 검사
-    const [isEmail, setIsEmail] = useState(false)
-    const [isPassword, setIsPassword] = useState(false)
-    const [isPasswordConfirm, setIsPasswordConfirm] = useState(false)
-    const [isName, setIsName] = useState(false)
+  const [isRegexMessage, setIsRegexMessage] = useState({
+    emailMessage: '',
+    passwordMessage: '',
+    passwordConfirmMessage: '',
+    nameMessage: '',
+  });
 
+  const [isRegex, setIsRegex] = useState({
+    isRegexEmail: false,
+    isRegexPassword: false,
+    isRegexPasswordConfirm: false,
+    isRegexName: false,
+  });
 
-    const data = {
-        userEmail: userEmail,
-        userPassword: userPassword,
-        userPasswordConfirm: userPasswordConfirm,
-        userName: userName,
-        userAge: userAge,
+  const onChangeInput = (e) => {
+    const { id, value } = e.target;
+    setUserSignupData({
+        ...userSignupData,
+        [id]: value,
+        // userAge: userAge
+    })
+  }
+
+  useEffect(() => {
+    const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
+
+    if (!emailRegex.test(userSignupData.userEmail)) {
+        setIsRegexMessage({
+            ...isRegexMessage,
+            emailMessage: "올바른 이메일 형식이 아닙니다.",
+        })
+        setIsRegex({
+            ...isRegex,
+            isEmail: false,
+        })
+    } else {
+        setIsRegexMessage({
+            ...isRegexMessage,
+            emailMessage: ''
+        })
+        setIsRegex({
+            ...isRegex,
+            isEmail: true,
+        })
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userSignupData.userEmail])
 
-    const is_identical = useRef("")
-    useEffect(() => {
-        if (userPassword === userPasswordConfirm) {
-            is_identical.current = "비밀번호가 일치합니다."
-          } else {
-            is_identical.current = "비밀번호가 일치하지 않습니다."
-          }
-          return () => {
-          }
-    }, [userPassword, userPasswordConfirm]);
+  useEffect(() => {
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/
 
-    function alert_(e) {
-        e.preventDefault();
+    if (!passwordRegex.test(userSignupData.userPassword)) {
+        setIsRegexMessage({
+            ...isRegexMessage,
+            passwordMessage: "위험(영문자, 숫자, 특수문자 조합/ 8~20자)"
+        })
+        setIsRegex({
+            ...isRegex,
+            isPassword: false,
+        })
+      } else {
+        setIsRegexMessage({
+            ...isRegexMessage,
+            passwordMessage: "안전",
+        })
+        setIsRegex({
+            ...isRegex,
+            isPassword: true,
+        })
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userSignupData.userPassword])
 
-        alert(userName + "님 환영합니다!");
-        console.log(data);
+  useEffect(() => {
+    if (userSignupData.userPassword === userSignupData.userPasswordConfirm) {
+      setIsRegexMessage({
+        ...isRegexMessage,
+        passwordConfirmMessage: '',
+      })
+      setIsRegex({
+        ...isRegex,
+        isPasswordConfirm: false,
+      })
+    } else {
+      setIsRegexMessage({
+        ...isRegexMessage,
+        passwordConfirmMessage: "비밀번호가 일치하지 않습니다."
+      })
+      setIsRegex({
+        ...isRegex,
+        isPasswordConfirm: true,
+      })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userSignupData.userPasswordConfirm])
+
+  useEffect(() => {
+    if (userSignupData.userName < 2 || userSignupData.userName > 5) {
+      setIsRegexMessage({
+        ...isRegexMessage,
+        nameMessage: '',
+      })
+      setIsRegex({
+        ...isRegex,
+        isName: false,
+      })
+    } else {
+      setIsRegexMessage({
+        ...isRegexMessage,
+        nameMessage: "2~5자",
+      })
+      setIsRegex({
+        ...isRegex,
+        isName: true,
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userSignupData.userName])
+
+  const onChangeAge = (event) => {
+    setAge(event.target.value);
+  };
 
 
-    const onChangeEmail = useCallback((e) => {
-        const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
-        const emailCurrent = e.target.value
-        
-        setEmail(emailCurrent)
+  const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/
+  const isValidSignup = (emailRegex.test(userSignupData.userEmail) && passwordRegex.test(userSignupData.userPassword) && userSignupData.userPassword===userSignupData.userPasswordConfirm && userSignupData.userName);
     
-        if (!emailRegex.test(emailCurrent)) {
-          setEmailMessage("올바른 이메일 형식이 아닙니다.")
-          setIsEmail(false)
-        } else {
-          setEmailMessage('올바른 이메일 형식입니다.')
-          setIsEmail(true)
-        }
-    }, [])
-    
-    const onChangePassword = useCallback((e) => {
-        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/
-        const passwordCurrent = e.target.value
-        setPassword(passwordCurrent)
-    
-        if (!passwordRegex.test(passwordCurrent)) {
-          setPasswordMessage('영문자, 숫자, 특수문자 조합/ 8자리 이상')
-          setIsPassword(false)
-        } else {
-          setPasswordMessage('안전')
-          setIsPassword(true)
-        }
-    }, [])
-    
-    const onChangePasswordConfirm = useCallback((e) => {
-        const passwordConfirmCurrent = e.target.value
-        setPasswordConfirm(passwordConfirmCurrent)
 
-        if (userPassword === passwordConfirmCurrent) {
-            setPasswordConfirmMessage("비밀번호가 일치합니다.")
-            setIsPasswordConfirm(true)
-        } else {
-            setPasswordConfirmMessage("비밀번호가 일치하지 않습니다.")
-            setIsPasswordConfirm(false)
-        }
-    }, [userPassword])
+  function alert_(e) {
+      e.preventDefault();
+      alert(userSignupData.userName + "님 환영합니다!");
+      console.log(userSignupData);
+  };
 
-    const onChangeName = useCallback((e) => {
-        setName(e.target.value)
-        if (e.target.value.length < 2 || e.target.value.length > 5) {
-          setNameMessage("2글자 이상, 5글자 이하")
-          setIsName(false)
-        } else {
-          setNameMessage('')
-          setIsName(true)
-        }
-      }, [])
-
-    const onChangeAge = (event) => {
-        setAge(event.target.value);
-    };
   return (
+
     <div className="body">
         <section className="signup-form">
             <h1 style={{size:20}}>회원가입</h1>
             <form>
-
                 <div className="formbox">
-                    <label>이메일*</label> 
-                    <input text="이메일" type="email" typeName="email" onChange={onChangeEmail} autoComplete='off' required></input>
-                    {<label className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</label>}
-                </div>
-
-                <div className="formbox">
-                    <label>비밀번호*</label>
-                    <input type="password" passwordText="비밀번호 (숫자, 영문자, 특수문자 조합으로 8자리 이상)" onChange={onChangePassword} autoComplete='off'></input>
-                    {(<span className={`message ${isPassword ? 'success' : 'error'}`}>{passwordMessage}</span>)}
+                    <label htmlFor="userEmail">이메일*</label> 
+                    <input type="email" id="userEmail" onChange={onChangeInput} maxLength='30' autoComplete='off' required></input>
+                    {userSignupData.userEmail.length > 0 &&<span className={`message ${isRegex.isRegexEmail ? 'success' : 'error'}`}>{isRegexMessage.emailMessage}</span>}
                 </div>
 
                 <div className="formbox">
-                    <label>비밀번호 재확인*</label>
-                    <input
-                    type="password"
-                    title="비밀번호 확인"
-                    typeTitle="passwordConfirm"
-                    onChange={onChangePasswordConfirm}
-                    autoComplete='off'
-                    required
-                    ></input>
-                    {userPasswordConfirm.length > 0 && (
-                    <span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>
-                    )}
-                    {/* {<label>{is_identical.current}</label>} */}
+                    <label htmlFor="userPassword">비밀번호*</label>
+                    <input type="password" id="userPassword" title="비밀번호 (숫자, 영문자, 특수문자 조합으로 8자리 이상)" onChange={onChangeInput} maxLength='20' autoComplete='off' required></input>
+                    {(userSignupData.userPassword.length > 0 &&<span className={`message ${isRegex.isRegexPassword ? 'success' : 'error'}`}>{isRegexMessage.passwordMessage}</span>)}
                 </div>
 
                 <div className="formbox">
-                    <label>이름*</label>
-                    <input text="이름" type="text" typeName="name" onChange={onChangeName} minLength="1" maxLength="2" value={userName} required></input>
-                    {userName.length > 0 && <span className={`message ${isName ? 'success' : 'error'}`}>{nameMessage}</span>}
+                    <label htmlFor="userPasswordConfirm">비밀번호 재확인*</label>
+                    <input type="password" id="userPasswordConfirm" title="비밀번호 확인" onChange={onChangeInput} maxLength='20' autoComplete='off' required></input>
+                    {userSignupData.userPasswordConfirm.length > 0 && (<span className={`message ${isRegex.isRegexPasswordConfirm ? 'success' : 'error'}`}>{isRegexMessage.passwordConfirmMessage}</span>)}
                 </div>
 
                 <div className="formbox">
-                    <label>나이</label> 
-                    <input type="number" minLength="1" maxLength="5" autoComplete='off' onChange={onChangeAge} value={userAge}></input>
+                    <label htmlFor="userName">이름*</label>
+                    <input type="text" id="userName" onChange={onChangeInput} maxLength="5" autoComplete='off' required></input>
+                    {userSignupData.userName.length > 0 && <span className={`message ${isRegex.isName ? 'success' : 'error'}`}>{isRegexMessage.nameMessage}</span>}
                 </div>
 
-                <div className="btn">
-                    <button type="submit" href='/signup' onClick={(e) => alert_(e)}>가입하기</button>
+                <div className="formbox">
+                    <label htmlFor="age">나이</label> 
+                    <input type="number" id="userAge" autoComplete='off' onChange={onChangeAge}></input>
                 </div>
 
+                <div className="btn">   
+                    <button type="submit" className="submitRegister" onClick={(e) => alert_(e)} disabled={!isValidSignup}>가입하기</button>
+                </div>
             </form>
-
         </section>
     </div>
   )

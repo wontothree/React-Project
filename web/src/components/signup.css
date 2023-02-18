@@ -17,7 +17,7 @@
 .formbox {
     width: 340px; 
     position: relative;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .formbox input {
@@ -33,13 +33,17 @@
     color: #999;
 }
 
+.formbox span {
+    color: palevioletred;
+    font-size: 12px; 
+}
 
 .btn {margin-top: 30px;}
 .btn button {
     width: 100%; 
     height: 50px;
     background: #166c;
-    color: #fff;
+    color: ghostwhite;
     font-size: 20px;
     border-radius: 25px;
     cursor: pointer;
