@@ -17,6 +17,17 @@
     color: #999;
 }
 
+.success {
+    color: rgb(20, 149, 83);
+    font-size: 12px; 
+}
+
+.error  {
+    color: rgb(200, 79, 99);
+    font-size: 12px; 
+}
+
+
 .formbox span {
     color: palevioletred;
     font-size: 12px; 
