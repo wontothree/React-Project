@@ -32,3 +32,55 @@
     color: palevioletred;
     font-size: 12px; 
 }
+
+.formbox select {
+    color: #3a3434;
+    width: 100%;
+    padding: 20px 0px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 18px; 
+}
+
+
+.birthdate-form {
+    width: 340px; 
+    position: relative;
+    margin-top: 30px;
+}
+
+.birthdate-form label {
+    color: #999;
+}
+
+
+
+#userBirthdateYear {
+    width: 30%;
+    margin-right: 5%;
+    padding: 20px 0px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 18px; 
+}
+
+#userBirthdateMonth {
+    width: 30%;
+    padding: 20px 0px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 18px; 
+}
+
+#userBirthdateDay {
+    width: 30%;
+    margin-left: 5%;
+    padding: 20px 0px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 18px; 
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Button from '../components/Button';
 import Formbox from '../components/Formbox';
@@ -10,7 +10,11 @@ const Signup = () => {
         userPassword: '',
         userPasswordConfirm: '',
         userName: '',
-        userAge: '',
+        userBirthdateYear: '',
+        userBirthdateMonth: '',
+        userBirthdateDay: '',
+        userSex: '',
+        userPhone: '',
     });
 
     const onChangeInput = (e) => {
@@ -20,6 +24,10 @@ const Signup = () => {
             [id]: value,
         }));
     };
+
+    useEffect(() => {
+        console.log(userSignupData)
+    })
 
     const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
     const isRegexEmail = emailRegex.test(userSignupData.userEmail) || userSignupData.userEmail.length === 0;
@@ -52,8 +60,23 @@ const Signup = () => {
                 {userSignupData.userPassword.length > 0 &&<div className={`message ${isRegexPassword ? 'success' : 'error'}`}>{isRegexPasswordMessage}</div>}
                 <Formbox htmlFor="userPasswordConfirm" name="비밀번호 확인*" type="password" id="userPasswordConfirm" title="비밀번호 확인" onChange={onChangeInput} maxLength='20' message={isRegexPasswordConfirmMessage}/>
                 <Formbox htmlFor="userName" name="이름*" type="text" id="userName" title="이름" onChange={onChangeInput} maxLength="10" message={isRegexNameMessage}/>
-                <Formbox htmlFor="userAge" name="생년월일" type="number" id="userAge" title="생년월일(6자)" onChange={onChangeInput}/>
-                <Button id="submitRegister" onClick={(e)=>handleSubmit(e)} href="/signupsecond" condition={isValidSignup} disabled={!isValidSignup}/>
+                <div className="birthdate-form">
+                    <label htmlFor="userBirthdate">생년월일</label>
+                    <br></br> 
+                    <input type="number" id="userBirthdateYear" title="년" placeholder="년" className="year" onChange={onChangeInput} autoComplete='off'></input>
+                    <input type="number" id="userBirthdateMonth" title="월" placeholder="월" className="month" onChange={onChangeInput} autoComplete='off'></input>
+                    <input type="number" id="userBirthdateDay" title="일" placeholder="일" className="day" onChange={onChangeInput} autoComplete='off'></input>
+                </div>
+                <div className="formbox">
+                    <label htmlFor="userSex">성별</label>
+                    <select id="userSex" onChange={onChangeInput}>
+                        <option value="">성별</option>
+                        <option value="man">남자</option>
+                        <option value="woman">여자</option>
+                    </select>
+                </div>
+                <Formbox htmlFor="userPhone" name="휴대전화" type="number" id="userPhone" title="전화번호" onChange={onChangeInput}/>
+                <Button id="submitRegister" onClick={(e)=>handleSubmit(e)} condition={isValidSignup} disabled={!isValidSignup}/>
             </form>
         </section>
     </div>
