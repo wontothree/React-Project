@@ -8,7 +8,7 @@ const Formbox = (props) => {
         <div className="formbox">
             <label htmlFor={props.htmlFor}>{props.name}</label> 
             <input type={props.type} id={props.id} title={props.title} onChange={props.onChange} maxLength={props.max} autoComplete='off'></input>
-            {props.condition &&<span className={props.className}>{props.message}</span>}
+            <span className={props.className}>{props.message}</span>
         </div>
     </div>
   )
