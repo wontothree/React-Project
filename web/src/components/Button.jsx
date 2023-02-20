@@ -5,7 +5,7 @@ import "./button.css"
 const Button = (props) => {
   return (
     <div className="btn">   
-        <button type="submit" id={props.id} onClick={props.onClick} onChange={props.onChange} disabled={props.disabled}>가입하기</button>
+        <button type="submit" className={props.condition ? 'form-button' : 'form-button-disabled'} onClick={props.onClick} href={props.href} disabled={props.disabled}>다음</button>
     </div>
   )
 }

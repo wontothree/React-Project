@@ -1,5 +1,16 @@
 .btn {margin-top: 30px;}
-.btn button {
+
+.form-button-disabled {
+    width: 100%; 
+    height: 50px;
+    background: rgba(79, 110, 110, 0.8);
+    color: ghostwhite;
+    font-size: 20px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.form-button {
     width: 100%; 
     height: 50px;
     background: #166c;
