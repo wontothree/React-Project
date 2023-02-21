@@ -1,0 +1,75 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: ghostwhite;
+}
+
+
+.signup-form h1 {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+.userPicture {
+    width: 340px; 
+    position: relative;
+    margin-top: 30px;
+}
+
+.userPicture label {
+    color: #999;
+}
+
+.userPicture input {
+    width: 100%;
+    padding: 20px 0px 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 18px; 
+}
+
+
+.job-form {
+    width: 340px; 
+    position: relative;
+    margin-top: 30px;
+}
+
+.job-form label {
+    color: #999;
+}
+
+#userJob {
+    width: 30%;
+    margin-top: 10px;
+    margin-right: 1.666%;
+    margin-left: 1.666%;
+    padding: 10px 0px 10px;
+    font-size: 15px; 
+    background-color: rgb(234, 239, 240);
+} 
+
+
+.skill-form {
+    width: 340px; 
+    position: relative;
+    margin-top: 30px;
+}
+
+.skill-form label {
+    color: #999;
+}
+
+#userSkill {
+    width: 30%;
+    margin-top: 10px;
+    margin-right: 1.666%;
+    margin-left: 1.666%;
+    padding: 10px 0px 10px;
+    font-size: 15px; 
+    background-color: rgb(234, 239, 240);
+} 

@@ -55,11 +55,11 @@ const Signup = () => {
         <section className="signup-form">
             <h1 style={{size:20}}>회원가입</h1>
             <form>
-                <Formbox htmlFor="userEmail" name="이메일*" type="email" id="userEmail" title="이메일" onChange={onChangeInput} maxLength='30' message={isRegexEmailMessage}/>
-                <Formbox htmlFor="userPassword" name="비밀번호*" type="password" id="userPassword" title="비밀번호(숫자, 영문자, 특수문자 조합/ 8~20자)" onChange={onChangeInput} maxLength='20'/>
+                <Formbox htmlFor="userEmail" name="이메일*" type="email" title="이메일" onChange={onChangeInput} maxLength='30' message={isRegexEmailMessage}/>
+                <Formbox htmlFor="userPassword" name="비밀번호*" type="password"  title="비밀번호(숫자, 영문자, 특수문자 조합/ 8~20자)" onChange={onChangeInput} maxLength='20'/>
                 {userSignupData.userPassword.length > 0 &&<div className={`message ${isRegexPassword ? 'success' : 'error'}`}>{isRegexPasswordMessage}</div>}
-                <Formbox htmlFor="userPasswordConfirm" name="비밀번호 확인*" type="password" id="userPasswordConfirm" title="비밀번호 확인" onChange={onChangeInput} maxLength='20' message={isRegexPasswordConfirmMessage}/>
-                <Formbox htmlFor="userName" name="이름*" type="text" id="userName" title="이름" onChange={onChangeInput} maxLength="10" message={isRegexNameMessage}/>
+                <Formbox htmlFor="userPasswordConfirm" name="비밀번호 확인*" type="password" title="비밀번호 확인" onChange={onChangeInput} maxLength='20' message={isRegexPasswordConfirmMessage}/>
+                <Formbox htmlFor="userName" name="이름*" type="text" title="이름" onChange={onChangeInput} maxLength="10" message={isRegexNameMessage}/>
                 <div className="birthdate-form">
                     <label htmlFor="userBirthdate">생년월일</label>
                     <br></br> 
@@ -75,7 +75,7 @@ const Signup = () => {
                         <option value="woman">여자</option>
                     </select>
                 </div>
-                <Formbox htmlFor="userPhone" name="휴대전화" type="number" id="userPhone" title="전화번호" onChange={onChangeInput}/>
+                <Formbox htmlFor="userPhone" name="휴대전화" type="number" title="전화번호" onChange={onChangeInput}/>
                 <Button id="submitRegister" onClick={(e)=>handleSubmit(e)} condition={isValidSignup} disabled={!isValidSignup}/>
             </form>
         </section>
