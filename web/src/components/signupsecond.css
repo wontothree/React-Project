@@ -1,11 +1,9 @@
 .body {
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
-    height: 100vh;
-    background-color: ghostwhite;
+    height: 150vh;
 }
-
 
 .signup-form h1 {
     font-size: 40px;
@@ -32,6 +30,27 @@
     font-size: 18px; 
 }
 
+.skill-form {
+    width: 340px; 
+    position: relative;
+    margin-top: 30px;
+}
+
+.skill-form label {
+    color: #999;
+}
+
+#userSkill {
+    width: 30%;
+    margin-top: 10px;
+    margin-right: 1.666%;
+    margin-left: 1.666%;
+    padding: 10px 0px 10px;
+    font-size: 15px; 
+    background-color: white;
+    color: #999;
+    border: solid #999;
+}
 
 .job-form {
     width: 340px; 
@@ -50,26 +69,7 @@
     margin-left: 1.666%;
     padding: 10px 0px 10px;
     font-size: 15px; 
-    background-color: rgb(234, 239, 240);
-} 
-
-
-.skill-form {
-    width: 340px; 
-    position: relative;
-    margin-top: 30px;
-}
-
-.skill-form label {
+    background-color: white;
     color: #999;
-}
-
-#userSkill {
-    width: 30%;
-    margin-top: 10px;
-    margin-right: 1.666%;
-    margin-left: 1.666%;
-    padding: 10px 0px 10px;
-    font-size: 15px; 
-    background-color: rgb(234, 239, 240);
+    border: solid #999;
 } 

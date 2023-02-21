@@ -58,18 +58,18 @@ const SignupSecond = () => {
               <div className="skill-form">
                 <label htmlFor="userSkill">기술 스택*</label>
                 <br></br>
-                <button type="submit" id="userSkill" title="프론트엔드" className="frontend" onChange={onChangeInput}>Html / CSS</button>
-                <button type="submit" id="userSkill" title="백엔드" className="backend" onChange={onChangeInput}>Javascript</button>
-                <button type="submit" id="userSkill" title="풀스택" className="fullStack" onChange={onChangeInput}>Typescript</button>
-                <button type="submit" id="userSkill" title="프론트엔드" className="frontend" onChange={onChangeInput}>Java</button>
-                <button type="submit" id="userSkill" title="백엔드" className="backend" onChange={onChangeInput}>Python</button>
-                <button type="submit" id="userSkill" title="풀스택" className="fullStack" onChange={onChangeInput}>PHP</button>
-                <button type="submit" id="userSkill" title="프론트엔드" className="frontend" onChange={onChangeInput}>Ruby</button>
-                <button type="submit" id="userSkill" title="백엔드" className="backend" onChange={onChangeInput}>Go</button>
-                <button type="submit" id="userSkill" title="풀스택" className="fullStack" onChange={onChangeInput}>Rust</button>
-                <button type="submit" id="userSkill" title="프론트엔드" className="frontend" onChange={onChangeInput}>C</button>
-                <button type="submit" id="userSkill" title="백엔드" className="backend" onChange={onChangeInput}>C++</button>
-                <button type="submit" id="userSkill" title="풀스택" className="fullStack" onChange={onChangeInput}>C#</button>
+                <button type="button" id="userSkill" title="프론트엔드" className="frontend" onChange={onChangeInput} onClick={() => console.log("1")}>Html / CSS</button>
+                <button type="button" id="userSkill" title="백엔드" className="backend" onChange={onChangeInput}>Javascript</button>
+                <button type="button" id="userSkill" title="풀스택" className="fullStack" onChange={onChangeInput}>Typescript</button>
+                <button type="button" id="userSkill" title="프론트엔드" className="frontend" onChange={onChangeInput}>Java</button>
+                <button type="button" id="userSkill" title="백엔드" className="backend" onChange={onChangeInput}>Python</button>
+                <button type="button" id="userSkill" title="풀스택" className="fullStack" onChange={onChangeInput}>PHP</button>
+                <button type="button" id="userSkill" title="프론트엔드" className="frontend" onChange={onChangeInput}>Ruby</button>
+                <button type="button" id="userSkill" title="백엔드" className="backend" onChange={onChangeInput}>Go</button>
+                <button type="button" id="userSkill" title="풀스택" className="fullStack" onChange={onChangeInput}>Rust</button>
+                <button type="button" id="userSkill" title="프론트엔드" className="frontend" onChange={onChangeInput}>C</button>
+                <button type="button" id="userSkill" title="백엔드" className="backend" onChange={onChangeInput}>C++</button>
+                <button type="button" id="userSkill" title="풀스택" className="fullStack" onChange={onChangeInput}>C#</button>
               </div>
               <div className="job-form">
                 <label htmlFor="userJob">현 직군 / 희망 직무*</label>
