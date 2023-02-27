@@ -9,7 +9,6 @@ const MyPage = () => {
         <InfoSection
           className={"userProfile"}
           name={"프로필"}
-          buttonType={"edit"}
           dataType={"userNickname"}
           tagType={"span"}
         />
@@ -17,7 +16,6 @@ const MyPage = () => {
         <InfoSection
           className={"userBlogInfo"}
           name={"기술 블로그 / 깃허브"}
-          buttonType={"append"}
           dataType={"userBlog"}
           tagType={"a"}
         />
@@ -25,7 +23,6 @@ const MyPage = () => {
         <InfoSection
           className={"userSkillInfo"}
           name={"기술 스텍"}
-          buttonType={"append"}
           dataType={"userSkill"}
           tagType={"TextBox"}
         />
@@ -33,7 +30,6 @@ const MyPage = () => {
         <InfoSection
           className={"userJobInfo"}
           name={"희망 직무"}
-          buttonType={"append"}
           dataType={"userJob"}
           tagType={"TextBox"}
         />
@@ -43,7 +39,6 @@ const MyPage = () => {
         <InfoSection
           className={"userIntroductionInfo"}
           name={"자기소개"}
-          buttonType={"edit"}
           dataType={"userIntroduction"}
           tagType={"span"}
         />
@@ -51,7 +46,6 @@ const MyPage = () => {
         <InfoSection
           className={"userCollegeInfo"}
           name={"학력"}
-          buttonType={"append"}
           dataType={"userCollege"}
           tagType={"span"}
         />
@@ -59,7 +53,6 @@ const MyPage = () => {
         <InfoSection
           className={"userCareerInfo"}
           name={"수상 경력/자격증"}
-          buttonType={"append"}
           dataType={"userCareer"}
           tagType={"span"}
         />
@@ -67,7 +60,6 @@ const MyPage = () => {
         <InfoSection
           className={"userExperienceInfo"}
           name={"프로젝트 경험 / 실무 경험"}
-          buttonType={"append"}
           dataType={"userExperience"}
           tagType={"span"}
         />
