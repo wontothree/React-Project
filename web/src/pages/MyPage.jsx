@@ -11,7 +11,7 @@ const dummyData = {
   },
 };
 
-teckStackList;
+// teckStackList;
 
 const MyPage = () => {
   return (

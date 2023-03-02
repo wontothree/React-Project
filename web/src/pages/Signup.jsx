@@ -85,14 +85,18 @@ const Signup = () => {
   return (
     <div className="body">
       <section className="signup-form">
-        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}>
-          <GoogleLogin
-            onSuccess={responseGoogle}
-            onError={responseGoogle}
-            cookiePolicy="single_host_origin"
-          />
-        </GoogleOAuthProvider>
         <h1 style={{ size: 20 }}>회원가입</h1>
+        <div>
+          <GoogleOAuthProvider
+            clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
+          >
+            <GoogleLogin
+              onSuccess={responseGoogle}
+              onError={responseGoogle}
+              cookiePolicy="single_host_origin"
+            />
+          </GoogleOAuthProvider>
+        </div>
         <form>
           <Formbox
             htmlFor="userEmail"
