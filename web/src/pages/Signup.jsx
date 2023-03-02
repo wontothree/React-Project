@@ -18,6 +18,8 @@ const Signup = () => {
     console.log(decodedHeader);
     const { email, name, picture } = decodedHeader;
 
+    console.log("d");
+
     setUser(prev => ({
       ...prev,
       userEmail: email,
