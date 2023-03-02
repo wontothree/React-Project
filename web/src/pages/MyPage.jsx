@@ -1,9 +1,10 @@
 import React, { createContext, useMemo, useContext } from "react";
 import InfoSection from "../components/mypage/InfoSection";
-import { teckStackList } from "../utils/infoList";
+import { dataStateContext } from "../App.jsx";
 
 const MyPage = () => {
-  return (
+  const dummyData = useContext(dataStateContext);
+  return Object.keys(dummyData).length !== 0 ? (
     <div className="MyPage">
       <div className="MyPageLeft">
         <InfoSection
@@ -65,6 +66,8 @@ const MyPage = () => {
         />
       </div>
     </div>
+  ) : (
+    <div></div>
   );
 };
 
