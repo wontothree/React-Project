@@ -9,44 +9,31 @@ import Test from "./pages/test";
 import { useReducer } from "react";
 import { useEffect } from "react";
 
-function copyObj(obj) {
-  const result = {};
-
-  for (let key in obj) {
-    if (typeof obj[key] === "object") {
-      result[key] = copyObj(obj[key]);
-    } else {
-      result[key] = obj[key];
-    }
-  }
-
-  return result;
-}
-
 const reducer = (state, action) => {
-  let copyState = copyObj(state);
-  console.log(copyState);
+  let copyState = { ...state };
+
   switch (action.type) {
     case "INIT": {
       return action.data;
     }
 
     case "CREATE": {
-      copyState[action.dataType] = copyState[action.dataType].append(
-        action.newData
-      );
-      break;
+      copyState[action.dataType] = [
+        action.newData,
+        ...copyState[action.dataType],
+      ];
+      return copyState;
     }
     case "REMOVE": {
       copyState[action.dataType] = copyState[action.dataType].filter(
         (v) => v !== action.delData
       );
-      break;
+
+      return copyState;
     }
     default:
       return state;
   }
-  return copyState;
 };
 
 export const dataStateContext = React.createContext();

@@ -42,7 +42,7 @@ const InfoSection = ({ name, className, dataType, tagType }) => {
   };
 
   const handleDelete = (it) => () => {
-    onRemove({ dataType, it });
+    onRemove(dataType, it);
   };
   const isEditTag = () => {
     switch (tagType) {
@@ -91,7 +91,7 @@ const InfoSection = ({ name, className, dataType, tagType }) => {
             <EditButton
               type={"append"}
               onClick={() => {
-                onCreate({ dataType, newData });
+                onCreate(dataType, newData);
                 setNewData("");
               }}
             />
