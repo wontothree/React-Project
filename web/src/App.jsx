@@ -2,11 +2,10 @@ import React, { createContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Main from "./pages/Main";
-import Detail from "./pages/Detail";
 import MyPage from "./pages/MyPage";
 import Signup from "./pages/Signup";
 import SignupSecond from "./pages/SignupSecond";
+
 import { useReducer } from "react";
 import { useEffect } from "react";
 
@@ -103,8 +102,6 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/home" element={<Home />} />
-            <Route path="/main" element={<Main />} />
-            <Route path="/detail" element={<Detail />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/signupsecond" element={<SignupSecond />} />
