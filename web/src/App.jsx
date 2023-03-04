@@ -6,8 +6,9 @@ import Main from "./pages/Main";
 import Detail from "./pages/Detail";
 import MyPage from "./pages/MyPage";
 import Signup from "./pages/Signup";
-import SignupSecond from "./pages/SignupSecond";
-import Test from "./pages/test";
+
+import SignupSecond from './pages/SignupSecond';
+
 
 export const UserContext = createContext();
 
