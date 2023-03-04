@@ -23,7 +23,7 @@ const reducer = (state, action) => {
     }
     case "REMOVE": {
       copyState[action.dataType] = copyState[action.dataType].filter(
-        (v) => v !== action.delData
+        v => v !== action.delData
       );
 
       return copyState;
