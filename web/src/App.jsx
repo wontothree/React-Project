@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Home from "./pages/Home";
 import Main from "./pages/Main";
 import Detail from "./pages/Detail";
 import MyPage from "./pages/MyPage";
@@ -37,6 +38,7 @@ function App() {
     <UserContext.Provider value={{ user, setUser }}>
       <BrowserRouter>
         <Routes>
+          <Route path="/*" element={<Home />}></Route>
           <Route path="/main" element={<Main />} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/mypage" element={<MyPage />} />

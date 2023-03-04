@@ -6,29 +6,9 @@ import Button from "../components/Button";
 import Formbox from "../components/Formbox";
 import "../components/signup.css";
 
-import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-import jwt_decode from "jwt-decode";
-
 const Signup = () => {
-  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-
-  const responseGoogle = async response => {
-    var decodedHeader = jwt_decode(response.credential);
-    console.log(decodedHeader);
-    const { email, name, picture } = decodedHeader;
-
-    setUser(prev => ({
-      ...prev,
-      userEmail: email,
-      userPassword: "googleLogin",
-      userPasswordConfirm: "googleLogin",
-      userName: name,
-      userPicture: picture,
-    }));
-
-    navigate("/signupsecond");
-  };
+  const { user, setUser } = useContext(UserContext);
 
   const onChangeInput = e => {
     const { id, value } = e.target;
@@ -86,17 +66,6 @@ const Signup = () => {
     <div className="body">
       <section className="signup-form">
         <h1 style={{ size: 20 }}>회원가입</h1>
-        <div>
-          <GoogleOAuthProvider
-            clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
-          >
-            <GoogleLogin
-              onSuccess={responseGoogle}
-              onError={responseGoogle}
-              cookiePolicy="single_host_origin"
-            />
-          </GoogleOAuthProvider>
-        </div>
         <form>
           <Formbox
             htmlFor="userEmail"
