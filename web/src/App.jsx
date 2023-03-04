@@ -9,7 +9,6 @@ import SignupSecond from "./pages/SignupSecond";
 import { useReducer } from "react";
 import { useEffect } from "react";
 
-
 const reducer = (state, action) => {
   let copyState = { ...state };
 
@@ -27,7 +26,7 @@ const reducer = (state, action) => {
     }
     case "REMOVE": {
       copyState[action.dataType] = copyState[action.dataType].filter(
-        (v) => v !== action.delData
+        v => v !== action.delData
       );
 
       return copyState;
@@ -98,15 +97,18 @@ function App() {
   return (
     <dataStateContext.Provider value={dummyData}>
       <dataDispatchContext.Provider value={{ onCreate, onRemove }}>
-      <UserContext.Provider value={{ user, setUser }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/signupsecond" element={<SignupSecond />} />
-          </Routes>
-        </BrowserRouter>
+        <UserContext.Provider value={{ user, setUser }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/*" element={<Home />} />
+              {/* <Route path="/main" element={<Main />} />
+              <Route path="/detail" element={<Detail />} /> */}
+              <Route path="/mypage" element={<MyPage />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/signupsecond" element={<SignupSecond />} />
+              {/* <Route path="/test" element={<Test />} /> */}
+            </Routes>
+          </BrowserRouter>
         </UserContext.Provider>
       </dataDispatchContext.Provider>
     </dataStateContext.Provider>
