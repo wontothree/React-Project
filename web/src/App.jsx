@@ -1,14 +1,10 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useReducer, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import MyPage from "./pages/MyPage";
 import Signup from "./pages/Signup";
 import SignupSecond from "./pages/SignupSecond";
-
-import { useReducer } from "react";
-import { useEffect } from "react";
-
 
 const reducer = (state, action) => {
   let copyState = { ...state };
@@ -41,9 +37,12 @@ export const dataStateContext = React.createContext();
 export const dataDispatchContext = React.createContext();
 export const UserContext = createContext();
 
+
+
 function App() {
   const [dummyData, dispatch] = useReducer(reducer, {});
-  const [user, setUser] = useState({
+
+  const [userSignupData, setUserSignupData] = useState({
     userEmail: "",
     userPassword: "",
     userPasswordConfirm: "",
@@ -54,15 +53,15 @@ function App() {
     userSex: "",
     userPhone: "",
 
-    userPicture: "",
-    userNickname: "",
-    userCollege: "",
-    userSkill: "",
-    userJob: "",
-    userExperience: "",
-    userCareer: "",
-    userIntroduction: "",
-    userBlog: "",
+    userPicture: '',
+    userNickname: '',
+    userCollege: '',
+    userSkills: [],
+    userJob: [],
+    userExperience: '',
+    userCareer: '',
+    userIntroduction: '',
+    userBlog: '',
   });
 
   const initData = {
@@ -98,7 +97,7 @@ function App() {
   return (
     <dataStateContext.Provider value={dummyData}>
       <dataDispatchContext.Provider value={{ onCreate, onRemove }}>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={{ userSignupData, setUserSignupData }}>
         <BrowserRouter>
           <Routes>
             <Route path="/home" element={<Home />} />

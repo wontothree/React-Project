@@ -1,39 +1,16 @@
 import { UserContext } from "../App";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 
 import Button from "../components/Button";
 import Formbox from "../components/Formbox";
-
 import "../components/signupsecond.css";
 
 const SignupSecond = () => {
-  const [userSignupData, setUserSignupData] = useState({
-    userEmail: "",
-    userPassword: "",
-    userPasswordConfirm: "",
-    userName: "",
-    userBirthdateYear: "",
-    userBirthdateMonth: "",
-    userBirthdateDay: "",
-    userSex: "",
-    userPhone: "",
-
-    userPicture: '',
-    userNickname: '',
-    userCollege: '',
-    userSkills: [],
-    userJob: [],
-    userExperience: '',
-    userCareer: '',
-    userIntroduction: '',
-    userBlog: '',
-  });
-
-  const { user, setUser } = useContext(UserContext);
+  const { userSignupData, setUserSignupData } = useContext(UserContext);
 
   const onChangeInput = e => {
     const { id, value } = e.target;
-    setUser(prev => ({
+    setUserSignupData(prev => ({
       ...prev,
       [id]: value,
     }));
@@ -56,7 +33,7 @@ const SignupSecond = () => {
   };
 
   useEffect(() => {
-    console.log(user);
+    console.log(userSignupData);
   });
 
   const isValidSignup = 0;
@@ -66,12 +43,17 @@ const SignupSecond = () => {
       <section className="signup-form">
         <h1 style={{ size: 20 }}>회원가입2</h1>
         <form method="post" encType="multipart/form-data">
-          <div className="userPicture">
+          <div>
             <label htmlFor="userPicture">프로필 사진*</label>
-            {user.userPicture !== "" ? (
-              <>
               <div>
-                <img src={user.userPicture} alt="user" />
+                <input
+                type="file"
+                id="userPicture"
+                name="chooseFile"
+                accept="image/*"
+                title="프로필 사진"
+                onChange={onChangeInput}
+                />
               </div>
               <Formbox htmlFor="userNickname" name="닉네임*" type="text" title="닉네임" onChange={onChangeInput}/>
               <Formbox htmlFor="userCollege" name="학력* (학교/캠퍼스/학과/학번)" type="text" title="학력" onChange={onChangeInput}/>
@@ -108,17 +90,7 @@ const SignupSecond = () => {
               <Formbox htmlFor="userCareer" name="수상 경력 / 자격증" type="text"  title="경력" onChange={onChangeInput}/>
               <Formbox htmlFor="userIntroduction" name="세 줄 자기 소개" type="text" title="자기소개" onChange={onChangeInput}/>
               <Formbox htmlFor="userBlog" name="기술 블로그 / 깃허브" type="url" title="블로그" onChange={onChangeInput}/>
-              <Button id="submitRegister" condition={isValidSignup} disabled={!isValidSignup}/></>
-            ) : (
-              <input
-                type="file"
-                id="userPicture"
-                name="chooseFile"
-                accept="image/*"
-                title="프로필 사진"
-                onChange={onChangeInput}
-              />
-            )}
+              <Button id="submitRegister" condition={isValidSignup} disabled={!isValidSignup}/>
           </div>
         </form>
       </section>
