@@ -5,8 +5,10 @@ import { dataStateContext, dataDispatchContext } from "../../App.jsx";
 import { useState } from "react";
 
 const InfoSection = ({ name, className, dataType, tagType }) => {
+
   const dummyData = useContext(dataStateContext);
   const { onCreate, onRemove } = useContext(dataDispatchContext);
+
   const [isEdit, setIsEdit] = useState(false);
   const [newData, setNewData] = useState("");
 
@@ -18,20 +20,27 @@ const InfoSection = ({ name, className, dataType, tagType }) => {
     setNewData(e.target.value);
   };
 
+
   const tag = () => {
     switch (tagType) {
+      // case "span":
+      //   return dummyData[dataType].map((it) => {
+      //     return <span>{it}</span>;
+      //   });
       case "span":
-        return dummyData[dataType].map((it) => {
-          return <span>{it}</span>;
-        });
+        return <span>{dummyData[dataType]}</span>
+
+      // case "a":
+      //   return dummyData[dataType].map((it) => {
+      //     return (
+      //       <a href={it} target="_blank" rel="noopener noreferrer">
+      //         {it}
+      //       </a>
+      //     );
+      //   });
       case "a":
-        return dummyData[dataType].map((it) => {
-          return (
-            <a href={it} target="_blank" rel="noopener noreferrer">
-              {it}
-            </a>
-          );
-        });
+        return <a>{dummyData[dataType]}</a>
+
       case "TextBox":
         return dummyData[dataType].map((it) => {
           return <TextBox name={it} />;
@@ -44,6 +53,8 @@ const InfoSection = ({ name, className, dataType, tagType }) => {
   const handleDelete = (it) => () => {
     onRemove(dataType, it);
   };
+
+
   const isEditTag = () => {
     switch (tagType) {
       case "span":

@@ -1,9 +1,22 @@
 import { UserContext } from "../App";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect ,useContext, useReducer } from "react";
+
 
 import Button from "../components/Button";
 import Formbox from "../components/Formbox";
 import "../components/signupsecond.css";
+
+
+const reducer_ = (state, action) => {
+  switch (action.type) {
+    case "INIT": {
+      return action.data;
+    }
+    default:
+      return state;
+  }
+};
+
 
 const SignupSecond = () => {
   const { userSignupData, setUserSignupData } = useContext(UserContext);
@@ -32,11 +45,39 @@ const SignupSecond = () => {
     }));
   };
 
-  useEffect(() => {
-    console.log(userSignupData);
-  });
-
   const isValidSignup = 0;
+
+
+  const userSignupData__ = {
+    userEmail: "",
+    userPassword: "",
+    userPasswordConfirm: "",
+    userName: "",
+    userBirthdateYear: "",
+    userBirthdateMonth: "",
+    userBirthdateDay: "",
+    userSex: "",
+    userPhone: "",
+  
+    userPicture: '',
+    userNickname: userSignupData.userNickname,
+    userCollege: '',
+    userSkills: [],
+    userJob: [],
+    userExperience: '',
+    userCareer: '',
+    userIntroduction: '',
+    userBlog: '',
+  };
+
+
+  const [dum, dispatch_] = useReducer(reducer_, 0);
+
+  useEffect(() => {
+    dispatch_({ type: "INIT", data: userSignupData__ });
+    console.log(userSignupData__)
+  }, []);
+
 
   return (
     <div className="body">
