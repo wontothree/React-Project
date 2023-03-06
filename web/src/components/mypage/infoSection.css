@@ -1,0 +1,28 @@
+.InfoSection {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 10px 10px;
+  background-color: rgb(225, 225, 225);
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.elements {
+  display: flex;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+section {
+  display: flex;
+  flex-direction: column;
+}

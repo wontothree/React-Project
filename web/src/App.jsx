@@ -24,9 +24,10 @@ const reducer = (state, action) => {
       ];
       return copyState;
     }
+
     case "REMOVE": {
       copyState[action.dataType] = copyState[action.dataType].filter(
-        v => v !== action.delData
+        (v) => v !== action.delData
       );
 
       return copyState;
@@ -55,13 +56,13 @@ function App() {
 
     userPicture: "",
     userNickname: "",
-    userCollege: "",
-    userSkill: "",
-    userJob: "",
-    userExperience: "",
-    userCareer: "",
+    userCollege: [],
+    userSkill: [],
+    userJob: [],
+    userExperience: [],
+    userCareer: [],
     userIntroduction: "",
-    userBlog: "",
+    userBlog: [],
   });
 
   const initData = {
@@ -77,9 +78,9 @@ function App() {
     userBlog: ["https://github.com/abc", "https://velog.io/abc"],
   };
 
-  useEffect(() => {
+  const onInit = (initData) => {
     dispatch({ type: "INIT", data: initData });
-  }, []);
+  };
 
   const onCreate = (dataType, newData) => {
     dispatch({
@@ -96,7 +97,7 @@ function App() {
 
   return (
     <dataStateContext.Provider value={dummyData}>
-      <dataDispatchContext.Provider value={{ onCreate, onRemove }}>
+      <dataDispatchContext.Provider value={{ onCreate, onRemove, onInit }}>
         <UserContext.Provider value={{ user, setUser }}>
           <BrowserRouter>
             <Routes>

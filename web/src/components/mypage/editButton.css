@@ -1,4 +1,27 @@
-.EditButton {
-  border-style: none;
-  font-size: 18px;
+.append {
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.delete {
+  border: none;
+  font-size: 10px;
+  background-color: rgb(225, 225, 225);
+}
+
+.delete:hover {
+  background-color: white;
+}
+
+.edit {
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.save {
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
 }
