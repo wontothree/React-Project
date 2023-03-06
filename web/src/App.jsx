@@ -2,13 +2,10 @@ import React, { createContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Main from "./pages/Main";
-import Detail from "./pages/Detail";
 import MyPage from "./pages/MyPage";
 import Signup from "./pages/Signup";
-
 import SignupSecond from "./pages/SignupSecond";
-import Test from "./pages/test";
+
 import { useReducer } from "react";
 import { useEffect } from "react";
 
@@ -27,6 +24,7 @@ const reducer = (state, action) => {
       ];
       return copyState;
     }
+
     case "REMOVE": {
       copyState[action.dataType] = copyState[action.dataType].filter(
         (v) => v !== action.delData
@@ -58,13 +56,13 @@ function App() {
 
     userPicture: "",
     userNickname: "",
-    userCollege: "",
-    userSkill: "",
-    userJob: "",
-    userExperience: "",
-    userCareer: "",
+    userCollege: [],
+    userSkill: [],
+    userJob: [],
+    userExperience: [],
+    userCareer: [],
     userIntroduction: "",
-    userBlog: "",
+    userBlog: [],
   });
 
   const initData = {
@@ -80,9 +78,9 @@ function App() {
     userBlog: ["https://github.com/abc", "https://velog.io/abc"],
   };
 
-  useEffect(() => {
+  const onInit = (initData) => {
     dispatch({ type: "INIT", data: initData });
-  }, []);
+  };
 
   const onCreate = (dataType, newData) => {
     dispatch({
@@ -99,18 +97,19 @@ function App() {
 
   return (
     <dataStateContext.Provider value={dummyData}>
-      <dataDispatchContext.Provider value={{ onCreate, onRemove }}>
-      <UserContext.Provider value={{ user, setUser }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/main" element={<Main />} />
-            <Route path="/detail" element={<Detail />} />
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/signupsecond" element={<SignupSecond />} />
-            <Route path="/test" element={<Test />} />
-          </Routes>
-        </BrowserRouter>
+      <dataDispatchContext.Provider value={{ onCreate, onRemove, onInit }}>
+        <UserContext.Provider value={{ user, setUser }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/*" element={<Home />} />
+              {/* <Route path="/main" element={<Main />} />
+              <Route path="/detail" element={<Detail />} /> */}
+              <Route path="/mypage" element={<MyPage />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/signupsecond" element={<SignupSecond />} />
+              {/* <Route path="/test" element={<Test />} /> */}
+            </Routes>
+          </BrowserRouter>
         </UserContext.Provider>
       </dataDispatchContext.Provider>
     </dataStateContext.Provider>

@@ -12,7 +12,7 @@ const types = {
 const EditButton = ({ type, onClick }) => {
   return (
     <>
-      <button className={`${type}Button`} onClick={onClick}>
+      <button className={type} onClick={onClick}>
         {types[type]}
       </button>
     </>

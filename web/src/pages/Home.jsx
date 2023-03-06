@@ -12,12 +12,12 @@ import jwt_decode from "jwt-decode";
 const Home = () => {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const responseGoogle = async response => {
+  const responseGoogle = async (response) => {
     let decodedHeader = jwt_decode(response.credential);
     console.log(decodedHeader);
     const { email, name, picture } = decodedHeader;
 
-    setUser(prev => ({
+    setUser((prev) => ({
       ...prev,
       userEmail: email,
       userPassword: "googleLogin",
