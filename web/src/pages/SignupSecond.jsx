@@ -35,8 +35,6 @@ const SignupSecond = () => {
     }));
   };
 
-  const isValidSignup = 0;
-
 
   const userSignupData__ = {
     userEmail: "",
