@@ -20,9 +20,10 @@ const reducer = (state, action) => {
       ];
       return copyState;
     }
+
     case "REMOVE": {
       copyState[action.dataType] = copyState[action.dataType].filter(
-        v => v !== action.delData
+        (v) => v !== action.delData
       );
 
       return copyState;
@@ -61,30 +62,20 @@ function App() {
     userBirthdateDay: "",
     userSex: "",
     userPhone: "",
-
-    userPicture: '',
-    userNickname: '',
-    userCollege: '',
-    userSkills: [],
+    userPicture: "",
+    userNickname: "",
+    userCollege: [],
+    userSkill: [],
     userJob: [],
-    userExperience: '',
-    userCareer: '',
-    userIntroduction: '',
-    userBlog: '',
+    userExperience: [],
+    userCareer: [],
+    userIntroduction: "",
+    userBlog: [],
   });
 
-  // useEffect(() => {
-  //   console.log(userSignupData)
-  // })
-
-
-
-  const [dummyData, dispatch] = useReducer(reducer, 0);
-
-  useEffect(() => {
+  const onInit = (initData) => {
     dispatch({ type: "INIT", data: initData });
-    console.log(initData)
-  }, []);
+  };
 
   const onCreate = (dataType, newData) => {
     dispatch({
@@ -101,16 +92,16 @@ function App() {
 
   return (
     <dataStateContext.Provider value={dummyData}>
-      <dataDispatchContext.Provider value={{ onCreate, onRemove }}>
-      <UserContext.Provider value={{ userSignupData, setUserSignupData }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/signupsecond" element={<SignupSecond />} />
-          </Routes>
-        </BrowserRouter>
+      <dataDispatchContext.Provider value={{ onCreate, onRemove, onInit }}>
+        <UserContext.Provider value={{ user, setUser }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/*" element={<Home />} />
+              <Route path="/mypage" element={<MyPage />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/signupsecond" element={<SignupSecond />} />
+            </Routes>
+          </BrowserRouter>
         </UserContext.Provider>
       </dataDispatchContext.Provider>
     </dataStateContext.Provider>

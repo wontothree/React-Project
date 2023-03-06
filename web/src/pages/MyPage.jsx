@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import InfoSection from "../components/mypage/InfoSection";
 import { dataStateContext } from "../App.jsx";
+import "../components/mypage/myPage.css";
 
 const MyPage = () => {
   const dummyData = useContext(dataStateContext);
@@ -9,12 +10,14 @@ const MyPage = () => {
   return Object.keys(dummyData).length !== 0 ? (
     <div className="MyPage">
       <div className="MyPageLeft">
-        <InfoSection
-          className={"userProfile"}
-          name={"프로필"}
-          dataType={"userNickname"}
-          tagType={"span"}
-        />
+        <div>
+          <header>
+            <span className="title">프로필</span>
+          </header>
+          <br />
+          <img src={dummyData.userPicture} alt="user" />
+          <span>{dummyData.userNickname}</span>
+        </div>
 
         <InfoSection
           className={"userBlogInfo"}
@@ -39,12 +42,13 @@ const MyPage = () => {
       </div>
 
       <div className="MyPageRight">
-        <InfoSection
-          className={"userIntroductionInfo"}
-          name={"자기소개"}
-          dataType={"userIntroduction"}
-          tagType={"span"}
-        />
+        <div>
+          <header>
+            <span className="title">자기소개</span>
+          </header>
+          <br />
+          <span>{dummyData.userIntroduction}</span>
+        </div>
 
         <InfoSection
           className={"userCollegeInfo"}
