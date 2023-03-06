@@ -4,9 +4,9 @@ import React, { useContext } from "react";
 import { dataStateContext, dataDispatchContext } from "../../App.jsx";
 import { useState } from "react";
 import "./infoSection.css";
+import { useEffect } from "react";
 
 const InfoSection = ({ name, className, dataType, tagType }) => {
-
   const dummyData = useContext(dataStateContext);
   const { onCreate, onRemove } = useContext(dataDispatchContext);
 
@@ -21,26 +21,21 @@ const InfoSection = ({ name, className, dataType, tagType }) => {
     setNewData(e.target.value);
   };
 
-
   const tag = () => {
     switch (tagType) {
-      // case "span":
-      //   return dummyData[dataType].map((it) => {
-      //     return <span>{it}</span>;
-      //   });
       case "span":
-        return <span>{dummyData[dataType]}</span>
+        return dummyData[dataType].map((it) => {
+          return <span>{it}</span>;
+        });
 
-      // case "a":
-      //   return dummyData[dataType].map((it) => {
-      //     return (
-      //       <a href={it} target="_blank" rel="noopener noreferrer">
-      //         {it}
-      //       </a>
-      //     );
-      //   });
       case "a":
-        return <a>{dummyData[dataType]}</a>
+        return dummyData[dataType].map((it) => {
+          return (
+            <a href={it} target="_blank" rel="noopener noreferrer">
+              {it}
+            </a>
+          );
+        });
 
       case "TextBox":
         return dummyData[dataType].map((it) => {
@@ -61,7 +56,7 @@ const InfoSection = ({ name, className, dataType, tagType }) => {
         return dummyData[dataType].map((it) => {
           return (
             <div className="elements">
-              <span>{it}</span>{" "}
+              <span>{it}</span>
               <EditButton type={"delete"} onClick={handleDelete(it)} />
             </div>
           );
