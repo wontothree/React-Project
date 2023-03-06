@@ -11,6 +11,10 @@ const SignupSecond = () => {
   const { onInit } = useContext(dataDispatchContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   const onChangeInput = (e) => {
     const { id, value } = e.target;
     setUser((prev) => ({
@@ -34,39 +38,6 @@ const SignupSecond = () => {
       [id]: [...user[id], title],
     }));
   };
-
-  const isValidSignup = 0;
-
-
-  const userSignupData__ = {
-    userEmail: "",
-    userPassword: "",
-    userPasswordConfirm: "",
-    userName: "",
-    userBirthdateYear: "",
-    userBirthdateMonth: "",
-    userBirthdateDay: "",
-    userSex: "",
-    userPhone: "",
-  
-    userPicture: '',
-    userNickname: userSignupData.userNickname,
-    userCollege: '',
-    userSkills: [],
-    userJob: [],
-    userExperience: '',
-    userCareer: '',
-    userIntroduction: '',
-    userBlog: '',
-  };
-
-
-  const [dum, dispatch_] = useReducer(reducer_, 0);
-
-  useEffect(() => {
-    dispatch_({ type: "INIT", data: userSignupData__ });
-    console.log(userSignupData__)
-  }, []);
 
   const isValidSignup = 1;
 
@@ -335,7 +306,6 @@ const SignupSecond = () => {
                   id="submitRegister"
                   condition={isValidSignup}
                   disabled={!isValidSignup}
-                  onSubmit={handleButtonSubmit}
                 />
               </>
             ) : (
