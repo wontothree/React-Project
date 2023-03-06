@@ -37,7 +37,7 @@ export const dataDispatchContext = React.createContext();
 export const UserContext = createContext();
 
 const initData = {
-  userNickname: "봄여름가을겨울",
+  userNickname: "봄여름가을겨을",
   userCollege: "OO대학교/oo캠퍼스/컴퓨터공학과/학사",
   userSkills: ["JavaScript", "React"],
   userJob: [],
