@@ -12,22 +12,22 @@ import jwt_decode from "jwt-decode";
 const Home = () => {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  // const responseGoogle = async response => {
-  //   let decodedHeader = jwt_decode(response.credential);
-  //   console.log(decodedHeader);
-  //   const { email, name, picture } = decodedHeader;
+  const responseGoogle = async (response) => {
+    let decodedHeader = jwt_decode(response.credential);
+    console.log(decodedHeader);
+    const { email, name, picture } = decodedHeader;
 
-  //   setUser(prev => ({
-  //     ...prev,
-  //     userEmail: email,
-  //     userPassword: "googleLogin",
-  //     userPasswordConfirm: "googleLogin",
-  //     userName: name,
-  //     userPicture: picture,
-  //   }));
+    setUser((prev) => ({
+      ...prev,
+      userEmail: email,
+      userPassword: "googleLogin",
+      userPasswordConfirm: "googleLogin",
+      userName: name,
+      userPicture: picture,
+    }));
 
-  //   navigate("/signupsecond");
-  // };
+    navigate("/signupsecond");
+  };
 
   const clickToSignup = () => {
     navigate("/signup");
@@ -47,7 +47,7 @@ const Home = () => {
         ></video>
         <div className="home__container-login__container">
           <div className="home__container-login__container-google">
-            {/* <GoogleOAuthProvider
+            <GoogleOAuthProvider
               clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
             >
               <GoogleLogin
@@ -55,7 +55,7 @@ const Home = () => {
                 onError={responseGoogle}
                 cookiePolicy="single_host_origin"
               />
-            </GoogleOAuthProvider> */}
+            </GoogleOAuthProvider>
           </div>
           <div className="home__container-login__container-signup">
             <button type="button" onClick={clickToSignup}>

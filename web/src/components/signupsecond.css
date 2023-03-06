@@ -40,16 +40,16 @@
   color: #999;
 }
 
-#userSkills {
-    width: 30%;
-    margin-top: 10px;
-    margin-right: 1.666%;
-    margin-left: 1.666%;
-    padding: 10px 0px 10px;
-    font-size: 15px; 
-    background-color: white;
-    color: #999;
-    border: solid #999;
+#userSkill {
+  width: 30%;
+  margin-top: 10px;
+  margin-right: 1.666%;
+  margin-left: 1.666%;
+  padding: 10px 0px 10px;
+  font-size: 15px;
+  background-color: white;
+  color: #999;
+  border: solid #999;
 }
 
 .job-form {
@@ -63,16 +63,16 @@
 }
 
 #userJob {
-    width: 30%;
-    margin-top: 10px;
-    margin-right: 1.666%;
-    margin-left: 1.666%;
-    padding: 10px 0px 10px;
-    font-size: 15px; 
-    background-color: white;
-    color: #999;
-    border: solid #999;
-} 
+  width: 30%;
+  margin-top: 10px;
+  margin-right: 1.666%;
+  margin-left: 1.666%;
+  padding: 10px 0px 10px;
+  font-size: 15px;
+  background-color: white;
+  color: #999;
+  border: solid #999;
+}
 
 /* .usable {
     width: 30%;

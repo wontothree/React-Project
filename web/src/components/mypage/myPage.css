@@ -1,0 +1,21 @@
+.MyPage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.MyPageLeft {
+  height: 75vh;
+  width: 30vw;
+  padding: 0px 5px;
+  margin: 0px 20px;
+}
+
+.MyPageRight {
+  height: 75vh;
+  width: 60vw;
+  padding: 0px 5px;
+  margin: 0px 20px;
+}
