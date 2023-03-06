@@ -1,10 +1,12 @@
-import React, { createContext, useMemo, useContext } from "react";
+import React, { useContext } from "react";
+
 import InfoSection from "../components/mypage/InfoSection";
 import { dataStateContext } from "../App.jsx";
 import "../components/mypage/myPage.css";
 
 const MyPage = () => {
   const dummyData = useContext(dataStateContext);
+
   return Object.keys(dummyData).length !== 0 ? (
     <div className="MyPage">
       <div className="MyPageLeft">
@@ -27,7 +29,7 @@ const MyPage = () => {
         <InfoSection
           className={"userSkillInfo"}
           name={"기술 스텍"}
-          dataType={"userSkill"}
+          dataType={"userSkills"}
           tagType={"TextBox"}
         />
 

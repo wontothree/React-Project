@@ -3,7 +3,6 @@ import React, { useState, useEffect, useContext } from "react";
 
 import Button from "../components/Button";
 import Formbox from "../components/Formbox";
-
 import "../components/signupsecond.css";
 import { useNavigate } from "react-router-dom";
 
@@ -36,9 +35,38 @@ const SignupSecond = () => {
     }));
   };
 
+  const isValidSignup = 0;
+
+
+  const userSignupData__ = {
+    userEmail: "",
+    userPassword: "",
+    userPasswordConfirm: "",
+    userName: "",
+    userBirthdateYear: "",
+    userBirthdateMonth: "",
+    userBirthdateDay: "",
+    userSex: "",
+    userPhone: "",
+  
+    userPicture: '',
+    userNickname: userSignupData.userNickname,
+    userCollege: '',
+    userSkills: [],
+    userJob: [],
+    userExperience: '',
+    userCareer: '',
+    userIntroduction: '',
+    userBlog: '',
+  };
+
+
+  const [dum, dispatch_] = useReducer(reducer_, 0);
+
   useEffect(() => {
-    console.log(user);
-  });
+    dispatch_({ type: "INIT", data: userSignupData__ });
+    console.log(userSignupData__)
+  }, []);
 
   const isValidSignup = 1;
 
