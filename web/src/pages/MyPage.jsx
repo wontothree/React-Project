@@ -6,7 +6,7 @@ import "../components/mypage/myPage.css";
 
 const MyPage = () => {
   const dummyData = useContext(dataStateContext);
-
+  console.log(dummyData);
   return Object.keys(dummyData).length !== 0 ? (
     <div className="MyPage">
       <div className="MyPageLeft">
@@ -29,7 +29,7 @@ const MyPage = () => {
         <InfoSection
           className={"userSkillInfo"}
           name={"기술 스텍"}
-          dataType={"userSkills"}
+          dataType={"userSkill"}
           tagType={"TextBox"}
         />
 
