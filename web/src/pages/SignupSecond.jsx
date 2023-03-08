@@ -1,5 +1,6 @@
 import { UserContext, dataDispatchContext } from "../App";
 import React, { useState, useEffect, useContext } from "react";
+// 안 쓰는 library는 지우는 습관을 가지면 좋을것 같아요!!
 
 import Button from "../components/Button";
 import Formbox from "../components/Formbox";
@@ -189,6 +190,7 @@ const SignupSecond = () => {
                     C#
                   </button>
                 </div>
+                {/* 기술 스택 부분을 따로 컴포넌트로 분리하면 코드가 깔끔해질 수도 있겠네요!! */}
                 <div className="job-form">
                   <label htmlFor="userJob">현 직군 / 희망 직무*</label>
                   <br></br>
@@ -274,6 +276,7 @@ const SignupSecond = () => {
                     보안엔지니어
                   </button>
                 </div>
+                {/* 현 직군 / 희망 직무 부분도 컴포넌트로 분리해도 코드가 깔끔해질 수 있을것 같네요!! */}
                 <Formbox
                   htmlFor="userExperience"
                   name="프로젝트 경험 / 실무 경험"

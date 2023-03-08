@@ -1,4 +1,5 @@
 import React, { createContext, useState, useReducer, useEffect } from "react";
+// 쓰이지 않는 라이브러리리는 삭제하면 좋을것 같아요!
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -51,6 +52,7 @@ const initData = {
   ],
   userBlog: ["https://github.com/abc", "https://velog.io/abc"],
 };
+// 이제 안쓰이는 데이터 같네요!
 
 
 function App() {
@@ -79,7 +81,7 @@ function App() {
   const onInit = (initData) => {
     dispatch({ type: "INIT", data: initData });
   };
-
+  
   const onCreate = (dataType, newData) => {
     dispatch({
       type: "CREATE",
@@ -100,6 +102,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/*" element={<Home />} />
+              {/* 와일드카드라는 개념은 저도 처음 알았네요. 저도 잘 배워서 사용해봐야겠네요. */}
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/signupsecond" element={<SignupSecond />} />

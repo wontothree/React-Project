@@ -1,5 +1,6 @@
 import { UserContext } from "../App";
 import React, { useState, useEffect, useContext } from "react";
+// 안 쓰는 라이브러리는 삭제하면 좋을 것 같아요!!
 
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
@@ -48,6 +49,10 @@ const Signup = () => {
     user.userName.length === 0;
   const isRegexNameMessage = isRegexName ? "" : "2~5자";
 
+  // 저는 일반적으로 변수에 is를 붙일때는 해당 값이 boolean 값일때고 함수에 붙일때는
+  // return 값이 boolean일 때만 사용합니다! 이름을 일관성있고 이해하기 쉽게 짓는 것은 중요하기 때문에
+  // 본인만의 룰을 가지고 이름을 지으시면 좋을 것 같아요!!
+
   const isValidSignup =
     isRegexEmail &&
     isRegexPassword &&
@@ -62,6 +67,8 @@ const Signup = () => {
     e.preventDefault();
     navigate("/signupsecond");
   }
+  // function과 arrow function 중 한가지로 통일해서 사용하는 것을 추천드릴게요~!
+
   return (
     <div className="body">
       <section className="signup-form">
@@ -156,6 +163,7 @@ const Signup = () => {
           <Button
             id="submitRegister"
             onClick={e => handleSubmit(e)}
+            // Click={handleSubmit} 으로 사용해도 동일합니다!!
             condition={isValidSignup}
             disabled={!isValidSignup}
           />

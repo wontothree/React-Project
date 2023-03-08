@@ -10,6 +10,8 @@ const MyPage = () => {
   return Object.keys(dummyData).length !== 0 ? (
     <div className="MyPage">
       <div className="MyPageLeft">
+      {/* className을 짓는 몇 가지 convention이 있습니다. 꼭 지켜야 하는 건 아니지만 지키는 것도 좋은 방법 중 하나 같아서 참고링크 드립니다
+      https://bogmong.tistory.com/14 */}
         <div>
           <header>
             <span className="title">프로필</span>
