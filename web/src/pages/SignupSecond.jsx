@@ -56,10 +56,9 @@ const SignupSecond = () => {
           encType="multipart/form-data"
           onSubmit={handleButtonSubmit}
         >
-          <div className="userPicture">
-            <label htmlFor="userPicture">프로필 사진*</label>
-                <div>
-                  <img src={user.userPicture} alt="user" />
+                <div className="userPicture">
+                  <label htmlFor="userPicture">프로필 사진*</label>
+                  <input type="file" id="userPicture" name="chooseFile" accept="image/*" title="프로필 사진" onChange={onChangeInput}/>
                 </div>
                 <Formbox
                   htmlFor="userNickname"
@@ -305,7 +304,6 @@ const SignupSecond = () => {
                   condition={isValidSignup}
                   disabled={!isValidSignup}
                 />
-          </div>
         </form>
       </section>
     </div>
