@@ -1,5 +1,5 @@
 import { UserContext, dataDispatchContext } from "../App";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 
 import Button from "../components/Button";
 import Formbox from "../components/Formbox";
@@ -58,8 +58,6 @@ const SignupSecond = () => {
         >
           <div className="userPicture">
             <label htmlFor="userPicture">프로필 사진*</label>
-            {user.userPicture !== "" ? (
-              <>
                 <div>
                   <img src={user.userPicture} alt="user" />
                 </div>
@@ -307,17 +305,6 @@ const SignupSecond = () => {
                   condition={isValidSignup}
                   disabled={!isValidSignup}
                 />
-              </>
-            ) : (
-              <input
-                type="file"
-                id="userPicture"
-                name="chooseFile"
-                accept="image/*"
-                title="프로필 사진"
-                onChange={onChangeInput}
-              />
-            )}
           </div>
         </form>
       </section>
